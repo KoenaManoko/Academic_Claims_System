@@ -4,7 +4,7 @@ This is a UI prototype built with ASP.NET Core MVC (Razor views). It demonstrate
 
 How to run (needs .NET 7 SDK installed):
 
-1. Open a terminal in this folder: c:/Users/Faizal/Desktop/PROG6212/ClaimPrototype
+1. Open a terminal in this folder: c:/Users/koena/Desktop/PROG6212/ClaimSystem
 2. Run:
 
     dotnet run
