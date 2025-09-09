@@ -17,18 +17,5 @@ Requirements coverage:
 - Mechanism for lecturers to upload supporting documents: Lecturer Upload view shows where file upload would be (disabled input in prototype).
 - Screen to track status of a claim: Lecturer Status view shows claim status and details.
 
-Notes: This is a prototype only. No database, authentication, or file storage is implemented. Buttons and actions are non-functional where noted.
-
-Persistence:
-- The app now uses a local SQLite database file named `claimprototype.db` created in the project folder. Claims submitted via the Submit form are stored there while the app is running and persisted to the file.
-- Uploaded attachments (from the Submit form) are saved to `wwwroot/uploads` and can be downloaded from the Claim Status page.
-
-Testing persistence:
-1. Run `dotnet run`.
-2. Submit a claim via "Submit Claim" and optionally include a file. After submitting you will be redirected to the Status page.
-3. Visit "Program Coordinator" or "Academic Manager" pages to see the claim listed. Use Verify/Approve buttons to change status.
-
-Author note: I built this as a small class project prototype — quick and messy in parts, but it shows the required screens. Comments and TODOs were left intentionally to explain choices.
-
 # PROG6212
 # PROG6212
