@@ -1,0 +1,98 @@
+@model ClaimingSystem.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Academic Claims Dashboard";
+}
+
+<div class="pt-4 pb-3">
+    <div class="d-flex justify-content-between align-items-start">
+        <div>
+            <h1 class="display-5">Academic Claims Dashboard</h1>
+            <p class="lead text-muted">Welcome to the academic claims system. Submit and track your teaching-related claims.</p>
+        </div>
+        <div>
+            <a class="btn btn-primary-custom btn-lg" href="/Lecturer/Submit"><span class="me-2">+</span> Submit New Claim</a>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card card-elevated p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-box me-3">
+                            <span class="d-flex align-items-center justify-content-center bg-light rounded shadow-sm" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-hourglass-half fa-2x" style="color: #f0b429;"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">Pending Claims</h6>
+                            <div class="small-muted">You have @Model.PendingCount claims awaiting review</div>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <span class="badge bg-warning text-dark rounded-pill">@Model.PendingCount</span>
+                            <div class="mt-2"><a href="/ProgramCoordinator" class="btn btn-sm btn-warning">View</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-elevated p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-box me-3">
+                            <span class="d-flex align-items-center justify-content-center bg-light rounded shadow-sm" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-circle-check fa-2x" style="color: #3c8c5a;"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">Approved Claims</h6>
+                            <div class="small-muted">Approved this academic year</div>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <span class="badge bg-success rounded-pill">@Model.ApprovedCount</span>
+                            <div class="mt-2"><a href="/AcademicManager" class="btn btn-sm btn-success">History</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-elevated p-3">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-box me-3">
+                            <span class="d-flex align-items-center justify-content-center bg-light rounded shadow-sm" style="width: 48px; height: 48px;">
+                                <i class="fa-solid fa-magnifying-glass fa-2x" style="color: #31a5d6;"></i>
+                            </span>
+                        </div>
+                        <div>
+                            <h6 class="mb-0">Track Status</h6>
+                            <div class="small-muted">Track the current status of your recent claims</div>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <span class="badge bg-info text-dark rounded-pill">@Model.RecentCount</span>
+                            <div class="mt-2"><a href="/Lecturer/Status/1" class="btn btn-sm btn-info text-white">Track</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4">
+        <h4>Recent Claims</h4>
+        <div class="list-group">
+        @if(Model.RecentClaims != null && Model.RecentClaims.Any()){
+            foreach(var r in Model.RecentClaims){
+                <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-start" href="/Lecturer/Status/@r.Id">
+                    <div>
+                        <div><strong>@r.LecturerName</strong> <span class="text-muted">- @r.Program</span></div>
+                        <div class="small text-muted">@r.SubmittedAt.ToString("g")</div>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-secondary">@r.Status</span>
+                    </div>
+                </a>
+            }
+        } else {
+            <div class="small text-muted mt-2">No recent claims.</div>
+        }
+        </div>
+    </div>
+</div>

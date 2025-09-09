@@ -1,0 +1,37 @@
+@model ClaimingSystem.Models.Claim
+@{
+    ViewData["Title"] = "Submit Claim";
+}
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Submit Claim</h3>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+            <div class="mb-3">
+                <label asp-for="LecturerName" class="form-label"></label>
+                <input asp-for="LecturerName" class="form-control" />
+                <span asp-validation-for="LecturerName" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Program" class="form-label"></label>
+                <input asp-for="Program" class="form-control" />
+                <span asp-validation-for="Program" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Notes" class="form-label"></label>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+                <span asp-validation-for="Notes" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Attachment (optional)</label>
+                <input type="file" name="attachment" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary-custom">Submit Claim</button>
+        </form>
+    </div>
+</div>

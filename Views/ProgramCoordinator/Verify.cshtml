@@ -1,0 +1,20 @@
+@model ClaimingSystem.Models.Claim
+@{
+    ViewData["Title"] = "Verify Claim";
+}
+<div class="card">
+    <h2>Verify Claim</h2>
+    <p><strong>Id:</strong> @Model.Id</p>
+    <p><strong>Lecturer:</strong> @Model.LecturerName</p>
+    <p><strong>Program:</strong> @Model.Program</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    @{ var currentRole = Context.Request.Cookies["CurrentRole"] ?? "Lecturer"; }
+    @if(currentRole == "ProgramCoordinator"){
+        <form method="post" asp-action="VerifyConfirm" asp-controller="ProgramCoordinator">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="btn btn-primary-custom">Mark as Verified</button>
+        </form>
+    } else {
+        <button class="btn btn-secondary" disabled>Only Program Coordinators can verify</button>
+    }
+</div>

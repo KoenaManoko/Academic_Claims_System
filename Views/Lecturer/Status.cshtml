@@ -1,0 +1,16 @@
+@model ClaimingSystem.Models.Claim
+@{
+    ViewData["Title"] = "Claim Status";
+}
+<div class="card">
+    <h2>Claim Status</h2>
+    <p><strong>Id:</strong> @Model.Id</p>
+    <p><strong>Lecturer:</strong> @Model.LecturerName</p>
+    <p><strong>Program:</strong> @Model.Program</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+    <p><strong>Submitted At:</strong> @Model.SubmittedAt</p>
+    <p><strong>Notes:</strong> @Model.Notes</p>
+    @if(!string.IsNullOrEmpty(Model.AttachmentFileName)){
+        <p><strong>Attachment:</strong> <a href="/uploads/@Model.AttachmentFileName" target="_blank">Download</a></p>
+    }
+</div>
